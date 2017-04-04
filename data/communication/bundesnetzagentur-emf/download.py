@@ -90,7 +90,7 @@ def get_details(fid):
         (atype, height, direction, hdistance, vdistance) = row.findall("td")
         try:
             height = float(height.text.strip().replace(",", "."))
-           except:
+        except:
             pass
         if direction.text.strip() == "ND":
             dirtext = None
