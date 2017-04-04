@@ -88,6 +88,10 @@ def get_details(fid):
         return
     for row in tables[0].findall("tr"):
         (atype, height, direction, hdistance, vdistance) = row.findall("td")
+        try:
+            height = float(height.text.strip().replace(",", "."))
+           except:
+            pass
         if direction.text.strip() == "ND":
             dirtext = None
         else:
@@ -106,7 +110,7 @@ def get_details(fid):
             vdistance_text = float(vdistance.text.strip().replace(",", "."))
         out["antennas"].append({
             "type": atype.text.strip(),
-            "height": float(height.text.strip().replace(",", ".")),
+            "height": height,
             "direction": dirtext,
             "hdistance": hdistance_text,
             "vdistance": vdistance_text
