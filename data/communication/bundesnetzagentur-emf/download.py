@@ -91,7 +91,7 @@ def get_details(fid):
         try:
             height = float(height.text.strip().replace(",", "."))
         except:
-            pass
+            continue
         if direction.text.strip() == "ND":
             dirtext = None
         else:
