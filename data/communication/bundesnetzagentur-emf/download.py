@@ -136,15 +136,16 @@ if __name__ == "__main__":
                     result[str(position["fID"])] = details
             west += STEP
         south += STEP
+    timestr = time.strftime("%Y%m%d")
 
     # save JSON
-    f = open("antennas.json", "wb")
+    f = open(timestr + "_antennas.json", "wb")
     f.write(json.dumps(result.values(), indent=4, sort_keys=True))
     f.close()
 
     # save CSV
     result_items = sorted(result.values(), key=lambda k: k["fid"])
-    with open("antennas.csv", "wb") as csvfile:
+    with open(timestr + "_antennas.csv", "wb") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["fid",
             "standortbescheinigung_nr",
